@@ -30,6 +30,7 @@
       "@services": ["src/services"],
       "@views": ["src/views"],
       "@types": ["src/types"],
+      "@schemas": ["src/schemas"],
     },
     "baseUrl": "./",
   }

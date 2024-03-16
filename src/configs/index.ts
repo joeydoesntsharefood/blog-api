@@ -1,0 +1,1 @@
+export { default  as prisma_instance } from './prisma';
