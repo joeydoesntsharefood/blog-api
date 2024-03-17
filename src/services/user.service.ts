@@ -1,5 +1,5 @@
 import { prisma_instance } from "@configs";
-import { FindsFlow, FirstAccessFlow } from "@types";
+import type { BaseError, FindsFlow, FirstAccessFlow } from "@types";
 
 export const create_user_service: FirstAccessFlow['service'] = async ({ email, name, verifyHash }) => {
   try {
@@ -7,7 +7,7 @@ export const create_user_service: FirstAccessFlow['service'] = async ({ email, n
       data: {
         email,
         name,
-        ...(Boolean(verifyHash) ? { verifyHash } : {}),
+        ...(verifyHash ? { verifyHash } : {}),
       }
     });
 
@@ -18,9 +18,11 @@ export const create_user_service: FirstAccessFlow['service'] = async ({ email, n
       success: true,
       data
     }
-  } catch (err: any) {
+  } catch (err: unknown) {
+    const error = err as BaseError;
+
     return {
-      message: err?.message ?? 'Não foi possível criar o usuário.',
+      message: error?.message ?? 'Não foi possível criar o usuário.',
       success: false,
     }
   }
@@ -41,9 +43,11 @@ export const find_users_service_by_email: FindsFlow['findUser'] = async email =>
       success: true,
       data
     }
-  } catch (err: any) {
+  } catch (err: unknown) {
+    const error = err as BaseError; 
+
     return {
-      message: err?.message ?? 'Não foi possível recuperar a listagem de usuários por algum erro interno.',
+      message: error?.message ?? 'Não foi possível recuperar a listagem de usuários por algum erro interno.',
       success: false,
     }
   }

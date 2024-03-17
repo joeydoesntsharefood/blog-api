@@ -1,3 +1,3 @@
-import { ServiceResponse } from "./base.type";
+import type { ServiceResponse } from "./base.type";
 
 export type BaseService<D, T> = (data: D) => Promise<ServiceResponse<T>>; 

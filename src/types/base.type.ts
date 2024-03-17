@@ -15,3 +15,7 @@ export interface BaseFlow<C, S> {
   controler: C,
   service: S
 }
+
+export interface BaseError {
+  message?: string;
+}

@@ -31,6 +31,8 @@
       "@views": ["src/views"],
       "@types": ["src/types"],
       "@schemas": ["src/schemas"],
+      "@middlewares": ["src/middlewares"],
+      "@utils": ["src/utils"],
     },
     "baseUrl": "./",
   }

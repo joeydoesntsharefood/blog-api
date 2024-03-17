@@ -1,0 +1,1 @@
+export type BaseUtil<D, T> = (value: D) => T;

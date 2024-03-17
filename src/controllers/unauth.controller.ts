@@ -1,6 +1,6 @@
 import { create_user_schema } from "@schemas";
 import { create_user_service, find_users_service_by_email, gen_random_rounds, generate_hash } from "@services";
-import { FirstAccessFlow } from "@types";
+import type { BaseError, FirstAccessFlow } from "@types";
 
 export const first_access: FirstAccessFlow['controler'] = async (req, res) => {
   try {
@@ -25,9 +25,11 @@ export const first_access: FirstAccessFlow['controler'] = async (req, res) => {
       success,
       data,
     })
-  } catch (err: any) {
+  } catch (err: unknown) {
+    const error = err as BaseError;
+
     return res.status(500).send({
-      message: err?.message ?? 'Ocorreu um erro na solicitação.',
+      message: error?.message ?? 'Ocorreu um erro na solicitação.',
       success: false,
     })
   }

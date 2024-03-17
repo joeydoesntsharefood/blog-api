@@ -1,4 +1,4 @@
-import { CryptFlow } from "@types";
+import type { CryptFlow } from "@types";
 import * as bcrypt from 'bcryptjs';
 
 export const generate_hash: CryptFlow['generate'] = async ({ value, salt }) => {
