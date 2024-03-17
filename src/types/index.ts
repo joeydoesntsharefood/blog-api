@@ -2,7 +2,9 @@ export type {
   FirstAccessFlow,
   OnFlow,
   FindsFlow,
-  CryptFlow
+  CryptFlow,
+  UpdatePasswordFlow,
+  PatchsFlow,
 } from './flow.type';
 export type {
   BaseMiddleware,

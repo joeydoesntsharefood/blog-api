@@ -8,13 +8,15 @@ datasource db {
 }
 
 model User {
-  id         String    @id @default(auto()) @map("_id") @db.ObjectId
-  name       String
-  email      String    @unique
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt
-  Article    Article[]
-  verifyHash String?
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  email        String    @unique
+  passwordHash String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  Article      Article[]
+  verifyHash   String?
+  hasVerified  Boolean   @default(false)
 }
 
 model Article {
